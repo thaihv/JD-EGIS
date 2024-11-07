@@ -3,10 +3,10 @@ name: Build & Deployment LVIS UI Prototype
 on:
   push:
     paths:
-      - './prototype/lvis-ui/**'
+      - 'prototype/lvis-ui/**'
   pull_request:
     paths:
-      - './prototype/lvis-ui/**'
+      - 'prototype/lvis-ui/**'
 jobs:
   build:
     runs-on: ubuntu-latest
