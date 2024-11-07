@@ -27,8 +27,6 @@ import translationEN from "./locales/en/translation.json";
 import translationKO from "./locales/ko/translation.json";
 import translationLO from "./locales/lo/translation.json";
 
-
-
 const resources = {
   en: {
     translation: translationEN,
