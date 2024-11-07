@@ -1,0 +1,44 @@
+
+name: Build & Deployment of Sample Data Service in Microservices Infrastructure
+
+on:
+  push:
+    paths:
+      - './prototype/egis0-service/**'
+  pull_request:
+    paths:
+      - './prototype/egis0-service/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest  
+    env:
+      VERSION: '0.0.1'
+      JAVA_VERSION: '17'
+      MAVEN_OPTS: '-Xmx1024m'
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: ${{ env.JAVA_VERSION }}
+        architecture: x64
+        cache: maven
+    - name: Cache Maven repository
+      uses: actions/cache@v3
+      
+    - name: Build with Maven
+      working-directory: ./prototype/egis0-service
+      run: mvn clean install -DskipTests=true
+    - name: Docker Login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD   
+ 
+    - name: Build egis0-service Image
+      working-directory: ./prototype/egis0-service
+      run: docker build . --file Dockerfile --tag thaihv/egis0-service:${{ env.VERSION }}      
+    - name: Docker Push egis0-service    
+      run: docker push thaihv/egis0-service:$VERSION
