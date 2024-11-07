@@ -17,15 +17,14 @@ import Welcome from "./Welcome";
 import RenderOnAnonymous from "./RenderOnAnonymous";
 import RenderOnAuthenticated from "./RenderOnAuthenticated";
 import NotRenderOnRole from "./NotRenderOnRole";
-import Egis0 from "./scenes/egis0";
-
 import { initializeAuth } from "./state"
-
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import translationEN from "./locales/en/translation.json";
 import translationKO from "./locales/ko/translation.json";
 import translationLO from "./locales/lo/translation.json";
+
+import Egis0 from "./scenes/egis0";
 
 const resources = {
   en: {
