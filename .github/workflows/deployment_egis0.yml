@@ -4,10 +4,10 @@ name: Build & Deployment of Sample Data Service in Microservices Infrastructure
 on:
   push:
     paths:
-      - './prototype/egis0-service/**'
+      - 'prototype/egis0-service/**'
   pull_request:
     paths:
-      - './prototype/egis0-service/**'
+      - 'prototype/egis0-service/**'
 jobs:
   build:
     runs-on: ubuntu-latest  
