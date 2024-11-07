@@ -4,10 +4,10 @@ name: Build & Deployment of Sample Data Service in Microservices Infrastructure
 on:
   push:
     paths:
-      - 'egis0-service/**'
+      - './prototype/egis0-service/**'
   pull_request:
     paths:
-      - 'egis0-service/**'
+      - './prototype/egis0-service/**'
 jobs:
   build:
     runs-on: ubuntu-latest  
@@ -28,7 +28,7 @@ jobs:
       uses: actions/cache@v3
       
     - name: Build with Maven
-      working-directory: ./egis0-service
+      working-directory: ./prototype/egis0-service
       run: mvn clean install -DskipTests=true
     - name: Docker Login
       env:
@@ -38,7 +38,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD   
  
     - name: Build egis0-service Image
-      working-directory: ./egis0-service
+      working-directory: ./prototype/egis0-service
       run: docker build . --file Dockerfile --tag thaihv/egis0-service:${{ env.VERSION }}      
     - name: Docker Push egis0-service    
       run: docker push thaihv/egis0-service:$VERSION
