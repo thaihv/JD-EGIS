@@ -1,0 +1,126 @@
+version: '3.8'
+
+services:
+  config-server:
+    image: thaihv/config-server:0.0.1
+    container_name: config-server
+    restart: always
+    environment: 
+      - spring.cloud.config.server.git.uri=https://github.com/thaihv/config-repo.git
+      - spring.cloud.config.server.git.clone-on-start=true
+    expose:
+      - "8888"
+    ports:
+      - "8888:8888"
+    healthcheck:
+      test: "exit 0"      
+    networks:
+      - dev-network      
+  eureka0-service:
+    image: thaihv/eureka0-service:0.0.1
+    container_name: eureka0-service
+    restart: always
+    environment: 
+      - spring.cloud.config.uri=http://config-server:8888
+      - "SPRING_PROFILES_ACTIVE=prod"    
+    expose:
+      - "8761"
+    ports:
+      - "8761:8761"
+    healthcheck:
+      test: "exit 0"      
+    networks:
+      - dev-network      
+    depends_on:
+      - config-server      
+  api0-gateway:
+    image: thaihv/api0-gateway:0.0.1
+    container_name: api0-gateway
+    restart: always
+    environment: 
+      - spring.cloud.config.uri=http://config-server:8888
+      - "SPRING_PROFILES_ACTIVE=prod"
+    expose:
+      - "8090"
+    ports:
+      - "8090:8090"
+    healthcheck:
+      test: "exit 0"      
+    networks:
+      - dev-network      
+    depends_on:
+      - config-server
+      - eureka0-service
+  postgis-db:
+    image: kartoza/postgis:16-3.4
+    container_name: postgis-db
+    volumes:
+      - postgis-data:/var/lib/postgis-db
+    environment:
+      # If you need to create multiple database you can add coma separated databases eg gis,data
+      - POSTGRES_DB=geospatial
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASS=postgres
+      - ALLOW_IP_RANGE=0.0.0.0/0
+      # Add extensions you need to be enabled by default in the DB. Default are the five specified below
+      - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology,postgis_raster,pgrouting
+    ports:
+      - 25432:5432
+    restart: on-failure
+    healthcheck:
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 1m
+    networks:
+      - dev-network                  
+  egis0-service:
+    image: thaihv/egis0-service:0.0.1
+    container_name: egis0-service
+    restart: on-failure
+    environment: 
+      - spring.config.import=configserver:http://config-server:8888
+      - "SPRING_PROFILES_ACTIVE=prod"
+    expose:
+      - "8091"
+    ports:
+      - "8091"
+    healthcheck:
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 1m      
+    networks:
+      - dev-network      
+    depends_on:
+      - config-server
+      - eureka0-service      
+  lvis-ui0:
+    image: thaihv/lvis-ui0:0.0.1
+    container_name: lvis-ui0
+    restart: always
+    environment:
+      - VITE_PROTOTYPE_API_BASE_URL=http://103.82.21.14:8090/prot0-api
+      - VITE_EGIS_API_BASE_URL=http://103.82.21.14:8090/egis0-api
+      - VITE_GEOMAP_WMS_URL_BK=http://103.82.21.14:8680/geoserver/lvis/wms      
+      - VITE_GEOMAP_WMS_URL=http://103.82.21.14:8680/geoserver/lvis/wms
+      - VITE_GEOMAP_GWC_URL_BK=http://103.82.21.14:8680/geoserver/gwc/service/wms
+      - VITE_REACT_APP_KEYCLOAK_URL=http://www.tamky.xyz:8080/
+      - VITE_REACT_APP_REALM_NAME=mydev
+      - VITE_REACT_APP_CLIENT_ID=lvis-ui0         
+    ports:
+      - 5173:5173      
+    volumes:
+      - ./lvis-ui0:/data/lvis-ui0
+    healthcheck:
+      test: "exit 0"      
+    networks:
+      - dev-network          
+volumes:
+  geoserver-data:
+  postgis-data:
+      driver: local
+
+networks:
+  dev-network:
+    driver: bridge
