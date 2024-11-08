@@ -11,7 +11,7 @@ const Valuation = () => {
       <Header title="LAND VALUATION DOCUMENTATION" subtitle="Find your land valuation materials." />
       <Box
         mt="40px"
-        height="75vh"
+        height="75.25vh"
         border={`1px solid ${theme.palette.secondary[200]}`}
         borderRadius="4px"
       >

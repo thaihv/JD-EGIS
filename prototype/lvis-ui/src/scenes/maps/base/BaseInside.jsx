@@ -8,7 +8,7 @@ const BaseInside = () => {
     <Box display="flex" width="100%" height="100%">
       <Box flexGrow={1}>
         <Box
-          height="100vh"
+          height="100%"
           position= "relative"
           sx={{
             display: "grid",

@@ -260,7 +260,7 @@ const Toolbar = ({ baseLayers, overlays, onBaseLayerChange, onOverlayToggle, ext
     { name: 'Measure', content: <MeasureIcon />, impl: <MeasurementControl /> },
     { name: 'Divider', content: null, impl: null },
     { name: 'Extend', content: <ExtendIcon />, impl: <ExtendControl /> },
-    { name: 'Scale', content: <AspectRatioOutlinedIcon />, impl: <ScaleTableControl /> },
+//    { name: 'Scale', content: <AspectRatioOutlinedIcon />, impl: <ScaleTableControl /> },
     { name: 'ZoomIn', content: <ZoomInButton />, impl: null },
     { name: 'Level', content: <ZoomDisplayButton />, impl: null },
     { name: 'ZoomOut', content: <ZoomOutButton />, impl: null },
@@ -278,7 +278,7 @@ const Toolbar = ({ baseLayers, overlays, onBaseLayerChange, onOverlayToggle, ext
         const isExtendControl = tool.name === 'Extend' ? true : false;
         if (!content && !implement) { // is Divider
           return (
-            <Box m="1.25vh 0 1.25vh 0" key={index}>
+            <Box m="1vh 0 1vh 0" key={index}>
             </Box>
           );
         }

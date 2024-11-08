@@ -59,14 +59,14 @@ export default function LeftBar() {
         display: "flex",
         position: "absolute",
         justifyContent: "flex-start",
-        height: "100vh",
+        height: "75vh",
         zIndex: "drawer",
       }}
     >
       <div {...getCollapseProps()}>
         <div
           style={{
-            height: "100vh",
+            height: "75vh",
             background: theme.palette.background.alt,
           }}
         >

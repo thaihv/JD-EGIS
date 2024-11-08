@@ -15,6 +15,7 @@ const ChooserWidget = ({ image, title, description, link, width="260px", height=
       height = {height} 
       display="flex" 
       flexDirection="column" 
+      bgcolor="#f5f5f5"
       alignItems="center"
       sx={{ 
         minWidth: 260, 

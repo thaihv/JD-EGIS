@@ -79,7 +79,7 @@ const ValuationMap = () => {
     );
   };
   return (
-    <div style={{ position: 'relative', height: '100vh' }}>
+    <div style={{ position: 'relative', height: '75vh' }}>
       <MapContainer
         zoomControl={false}
         bounds={extent}
