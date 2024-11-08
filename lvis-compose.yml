@@ -73,7 +73,41 @@ services:
       retries: 3
       start_period: 1m
     networks:
-      - dev-network                  
+      - dev-network
+  geoserver:
+    image: kartoza/geoserver:2.23.6
+    container_name: geoserver
+    volumes:
+      - geoserver-data:/opt/geoserver/data_dir
+    ports:
+      - 8680:8080
+    restart: on-failure
+    environment:
+      - GEOSERVER_DATA_DIR=opt/geoserver/data_dir
+      - GEOWEBCACHE_CACHE_DIR=/opt/geoserver/gwc
+      - GEOSERVER_ADMIN_PASSWORD=Admin@123
+      - GEOSERVER_ADMIN_USER=admin
+      - INITIAL_MEMORY=1G
+      - MAXIMUM_MEMORY=4G
+      - SAMPLE_DATA=true
+      - GEOSERVER_CONTEXT_ROOT=geoserver
+      - ROOT_WEBAPP_REDIRECT=true
+      - CONSOLE_HANDLER_LEVEL=WARNING
+      - DB_BACKEND=POSTGRES               
+      - HOST=postgis-db                          
+      - POSTGRES_PORT=5432                
+      - POSTGRES_DB=geospatial                   
+      - POSTGRES_USER=postgres    
+      - POSTGRES_PASS=postgres                       
+      - POSTGRES_SCHEMA=gwc           
+      - DISK_QUOTA_SIZE=5 
+    healthcheck:
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 1m
+    networks:
+      - dev-network      
   egis0-service:
     image: thaihv/egis0-service:0.0.1
     container_name: egis0-service
