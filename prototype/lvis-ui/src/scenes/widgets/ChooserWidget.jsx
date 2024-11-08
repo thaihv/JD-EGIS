@@ -57,9 +57,10 @@ const ChooserWidget = ({ image, title, description, link, width="260px", height=
 
       <FlexBetween>
         <Typography 
+          align="center" 
           sx={{
             color: medium,
-            fontSize: "32px",
+            fontSize: "21px",
             fontWeight: "bold",
             mt: "10px",
             transition: "all 0.3s",

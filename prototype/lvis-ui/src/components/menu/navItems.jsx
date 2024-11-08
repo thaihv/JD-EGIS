@@ -7,38 +7,28 @@ import BackupTableOutlinedIcon from '@mui/icons-material/BackupTableOutlined';
 import MonitorHeartOutlinedIcon from '@mui/icons-material/MonitorHeartOutlined';
 export const navItems = [
   {
-    text: "Inquiry",
-    link: "Search",
+    text: "Price Explorer",
+    link: "Montoring",
     icon: <SearchOutlinedIcon />,
   },
   {
-    text: "Business",
-    link: "Transactions",
+    text: "Valuation Documents",
+    link: "Search",
     icon: <AirplayOutlinedIcon/>,
   },
   {
-    text: "Valuation",
+    text: "Valuation Models",
     link: "Products",
     icon: <RoomOutlinedIcon />,
   },  
   {
-    text: "Statistics",
+    text: "Item 00",
     link: "Dashboard",
     icon: <CommentOutlinedIcon />,
   },
   {
-    text: "Montoring",
-    link: "Montoring",
-    icon: <MonitorHeartOutlinedIcon />,
-  },  
-  {
-    text: "Administration",
+    text: "Admin",
     link: "Customers",
     icon: <AssignmentOutlinedIcon />,
-  },  
-  {
-    text: "Charts",
-    link: "Tasks",
-    icon: <BackupTableOutlinedIcon />,
   },
 ];

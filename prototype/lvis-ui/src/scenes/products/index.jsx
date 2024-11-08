@@ -91,7 +91,7 @@ const Products = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="PRODUCTS" subtitle="See your list of products." />
+      <Header title="MODEL-BASED LAND VALUATION" subtitle="See your list of models." />
       {data || !isLoading ? (
         <Box
           mt="20px"

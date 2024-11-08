@@ -96,23 +96,23 @@ const HomePage = () => {
         <Box>
           <ChooserWidget 
             image="u29.png" 
-            title={t("Land Value Inquiry")}
+            title={t("Land Price Explorer")}
             description={t("Check easily land value information by region")}
-            link="Search"
+            link="montoring"
           />
         </Box>
         <Box>
           <ChooserWidget 
             image="u25.png" 
-            title={t("Manage Valuation Business")} 
+            title={t("Land Valuation Documentation")} 
             description={t("Support to manage various businesses of land valuation process")} 
-            link="Transactions"
+            link="Search"
           />
         </Box>
         <Box>
           <ChooserWidget 
             image="u26.png" 
-            title={t("Land Valuation")}
+            title={t("Model-based Land Valuation")}
             description={t("Calculate, analyze and compare land value by region")} 
             link="Products"
           />
@@ -120,7 +120,7 @@ const HomePage = () => {
         <Box>
           <ChooserWidget 
             image="u27.png" 
-            title={t("Statistical Information")} 
+            title={t("Item 00")} 
             description={t("Provides visualized and statistical analysis based on land value")}  
             link="Dashboard"
           />
@@ -128,9 +128,9 @@ const HomePage = () => {
         <Box>
           <ChooserWidget 
             image="u28.png" 
-            title={t("EGIS System")}
+            title={t("Admin")}
             description={t("Implementation of monitoring changes of price in real time mode")} 
-            link="Montoring"
+            link="Customers"
           />
         </Box>                  
       </Box>

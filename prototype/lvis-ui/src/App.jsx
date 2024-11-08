@@ -9,7 +9,7 @@ import Dashboard from "./scenes/dashboard";
 import Products from "./scenes/products";
 import Customers from "./scenes/customers";
 import Transactions from "./scenes/transactions";
-import BaseMap from "./scenes/maps/base";
+import Valuation from "./scenes/maps/valuation";
 import Utilities from "./scenes/utilities";
 import HomePage from "./scenes/home";
 import PageNotFound from "./scenes/pagenotfound"
@@ -69,16 +69,17 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={<HomePage />} />
-              <Route path="/search" element={<BaseMap />} />
+              
               <Route element={<Layout />}>
                 <Route path="/dashboard" element={
-                  <NotRenderOnRole roles={['egis-dev']} showNotAllowed>
+                  <NotRenderOnRole roles={[]} showNotAllowed>
                     <Dashboard />
                   </NotRenderOnRole>
                 } />
+                <Route path="/search" element={<Valuation />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/customers" element={
-                  <NotRenderOnRole roles={['egis-dev']} showNotAllowed>
+                  <NotRenderOnRole roles={[]} showNotAllowed>
                     <Customers />
                   </NotRenderOnRole>
                 } />

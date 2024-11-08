@@ -16,7 +16,7 @@ const Egis0 = () => {
   console.log(UserService.getTokenParsed());
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="EGIS MONITORING SYSTEM" subtitle="See real time info detected from EGIS System" />
+      <Header title="LAND PRICE EXPLORER" subtitle="See real price info managed from EGIS System" />
       <Box
         mt="20px"
         display="grid"
