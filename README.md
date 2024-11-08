@@ -1,5 +1,5 @@
 # Transition guide of Project teams
-**This repository contains a materials to guide different teams by geographical area the developemnt in microservices:**
+**This repository contains materials to guide different teams by geographical area in the developemnt using microservices:**
  1. A frontend service, shared across teams (lvis-ui):
     * React
     * MUI
