@@ -14,7 +14,7 @@ FROM nginx:alpine
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Copy React build output to Nginx's default HTML directory
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # Expose port 8086
 EXPOSE 8086
