@@ -16,8 +16,8 @@ COPY nginx/nginx.conf /etc/nginx/nginx.conf
 # Copy React build output to Nginx's default HTML directory
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Expose port 8086
-EXPOSE 8086
+# Expose port 8087
+EXPOSE 8087
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
