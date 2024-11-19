@@ -24,6 +24,9 @@ COPY nginx/nginx.conf /etc/nginx/nginx.conf
 # Copy the "dist" folder from the build stage to Nginx's html directory
 COPY --from=build /app/dist /usr/share/nginx/html
 
+# Debug: List files in the Nginx HTML directory
+RUN ls -al /usr/share/nginx/html
+
 # Expose the default port 80 for Nginx
 EXPOSE 80
 
