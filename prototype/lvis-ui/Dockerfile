@@ -2,7 +2,7 @@ FROM node:20.16.0 AS build
 
 WORKDIR /app
 COPY package*.json ./
-
+COPY . .
 # Install dependencies and build the app
 RUN npm install
 RUN npm run build
