@@ -35,7 +35,7 @@ jobs:
 
     - name: Build lvis-ui Image
       working-directory: ./prototype/lvis-ui
-      run: docker build . --file Dockerfile --tag thaihv/lvis-ui0:$VERSION      
+      run: docker build --no-cache -t thaihv/lvis-ui0:$VERSION --file Dockerfile .      
     - name: Docker Push lvis-ui    
       run: docker push thaihv/lvis-ui0:$VERSION
       
