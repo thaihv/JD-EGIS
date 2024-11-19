@@ -11,7 +11,7 @@ RUN npm install
 RUN npm run build
 
 # Use the official Nginx image to serve the built React app
-FROM nginx:alpine
+FROM nginx:latest
 
 # Copy custom Nginx configuration
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
