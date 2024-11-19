@@ -14,7 +14,7 @@ COPY . .
 
 # Build the app using Vite (This should create the "dist" folder)
 RUN npm run build
-RUN ls /app/dist
+RUN ls -al /app/dist
 # Step 2: Set up Nginx to serve the React app
 FROM nginx:latest
 
