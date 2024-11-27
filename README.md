@@ -1,9 +1,9 @@
 # Transition guide of Project teams
-**This repository contains materials to guide different teams by geographical area in the developemnt using microservices:**
+**This repository contains materials to guide geographically different teams in the developemnt using microservices:**
  1. A frontend service, shared across teams (lvis-ui):
     * React
     * MUI
- 1. A backend service for demo Rest APIs, kept seperate for each team (egis0-servie):
+ 1. A backend service for demo Rest APIs, kept separately for each team (egis0-servie):
     * Spring Boot 3
     * PostgresSQL
     * Keycloak
